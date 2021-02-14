@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 import { AppState } from '../index'
 import sortByListPriority from 'utils/listSort'
 import UNSUPPORTED_TOKEN_LIST from '../../constants/tokenLists/uniswap-v2-unsupported.tokenlist.json'
+//import {ssc} from 'utils/ssc'
 
 type TagDetails = Tags[keyof Tags]
 export interface TagInfo extends TagDetails {
@@ -100,12 +101,23 @@ function combineMaps(map1: TokenAddressMap, map2: TokenAddressMap): TokenAddress
   }
 }
 
+// async function loadTokens() {
+//   const queryConfig: any = {};
+//   let tokens: any[] = await ssc.find('tokens', 'tokens', queryConfig, 50, 0, [{ index: 'symbol', descending: false }]);
+//   return tokens;
+// }
+
 // merge tokens contained within lists from urls
 function useCombinedTokenMapFromUrls(urls: string[] | undefined): TokenAddressMap {
   const lists = useAllLists()
 
   return useMemo(() => {
     if (!urls) return EMPTY_LIST
+
+    //let tokens: any[] = [];
+    //(async () => tokens = await loadTokens())();
+
+    //console.log(tokens);
 
     return (
       urls
@@ -117,9 +129,11 @@ function useCombinedTokenMapFromUrls(urls: string[] | undefined): TokenAddressMa
           if (!current) return allTokens
           try {
             const newTokens = Object.assign(listToTokenMap(current))
+            console.log(allTokens);
             return combineMaps(allTokens, newTokens)
           } catch (error) {
             console.error('Could not show token list due to error', error)
+            console.log(allTokens);
             return allTokens
           }
         }, EMPTY_LIST)

@@ -21,6 +21,11 @@ export const COMP = new Token(ChainId.MAINNET, '0xc00e94Cb662C3520282E6f57172140
 export const MKR = new Token(ChainId.MAINNET, '0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2', 18, 'MKR', 'Maker')
 export const AMPL = new Token(ChainId.MAINNET, '0xD46bA6D942050d489DBd938a2C909A5d5039A161', 9, 'AMPL', 'Ampleforth')
 export const WBTC = new Token(ChainId.MAINNET, '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599', 8, 'WBTC', 'Wrapped BTC')
+export const LEO = new Token(ChainId.MAINNET, '0x0000000000000000000000000000000000000002', 18, 'LEO', 'LEO')
+export const PAL = new Token(ChainId.MAINNET, '0x0000000000000000000000000000000000000003', 18, 'PAL', 'PAL')
+export const BEE = new Token(ChainId.MAINNET, '0x0000000000000000000000000000000000000004', 18, 'BEE', 'BEE')
+export const WORKERBEE = new Token(ChainId.MAINNET, '0x0000000000000000000000000000000000000005', 18, 'WORKERBEE', 'WORKERBEE')
+export const DEC = new Token(ChainId.MAINNET, '0x0000000000000000000000000000000000000006', 18, 'DEC', 'DEC')
 
 // Block time here is slightly higher (~1s) than average in order to avoid ongoing proposals past the displayed time
 export const AVERAGE_BLOCK_TIME_IN_SECS = 13
@@ -62,7 +67,7 @@ const WETH_ONLY: ChainTokenList = {
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT, COMP, MKR, WBTC]
+  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], LEO, PAL, BEE, WORKERBEE, DEC]
 }
 
 /**
@@ -78,13 +83,13 @@ export const CUSTOM_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: To
 // used for display in the default list when adding liquidity
 export const SUGGESTED_BASES: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT, WBTC]
+  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], LEO, PAL, BEE, WORKERBEE, DEC]
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT, WBTC]
+  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], LEO, PAL, BEE, WORKERBEE, DEC]
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {

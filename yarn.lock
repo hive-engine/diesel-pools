@@ -3555,7 +3555,7 @@ axios@^0.18.0:
     follow-redirects "1.5.10"
     is-buffer "^2.0.2"
 
-axios@^0.19.2:
+axios@^0.19.0, axios@^0.19.2:
   version "0.19.2"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.19.2.tgz#3ea36c5d8818d0d5f8a8a97a6d36b86cdc00cb27"
   integrity sha512-fjgm5MvRHLhx+osE2xoekY70AhARk3a6hkN+3Io1jc00jtquGvxYlKlsFUhmUET0V5te6CcZI7lcv2Ym61mjHA==
@@ -14109,6 +14109,13 @@ sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
+
+sscjs@0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/sscjs/-/sscjs-0.0.8.tgz#68b7c8901b9e22cc39482a8e6d2f28eeae898cc5"
+  integrity sha512-uu7zaFHUqUL5YySNrRg0MKN9PtZA356mX080ETJgGXNy7Wdc1RgwxHWbZJySTyywZRjn3BdIZRrNCEId6AS+Yw==
+  dependencies:
+    axios "^0.19.0"
 
 sshpk@^1.7.0:
   version "1.16.1"
