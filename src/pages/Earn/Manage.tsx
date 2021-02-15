@@ -3,7 +3,7 @@ import { AutoColumn } from '../../components/Column'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-import { JSBI, TokenAmount, ETHER } from '@uniswap/sdk'
+import { JSBI, TokenAmount } from '@uniswap/sdk'
 import { RouteComponentProps } from 'react-router-dom'
 import DoubleCurrencyLogo from '../../components/DoubleLogo'
 import { useCurrency } from '../../hooks/Tokens'
@@ -28,7 +28,7 @@ import { useTotalSupply } from '../../data/TotalSupply'
 import { usePair } from '../../data/Reserves'
 import usePrevious from '../../hooks/usePrevious'
 import useUSDCPrice from '../../utils/useUSDCPrice'
-import { BIG_INT_ZERO, BIG_INT_SECONDS_IN_WEEK } from '../../constants'
+import { BIG_INT_ZERO, BIG_INT_SECONDS_IN_WEEK, SWAPHIVE } from '../../constants'
 
 const PageWrapper = styled(AutoColumn)`
   max-width: 640px;
@@ -114,8 +114,8 @@ export default function Manage({
   // fade cards if nothing staked or nothing earned yet
   const disableTop = !stakingInfo?.stakedAmount || stakingInfo.stakedAmount.equalTo(JSBI.BigInt(0))
 
-  const token = currencyA === ETHER ? tokenB : tokenA
-  const WETH = currencyA === ETHER ? tokenA : tokenB
+  const token = currencyA === SWAPHIVE ? tokenB : tokenA
+  const WETH = currencyA === SWAPHIVE ? tokenA : tokenB
   const backgroundColor = useColor(token)
 
   // get WETH value of staked LP tokens

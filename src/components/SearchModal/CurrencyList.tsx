@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, currencyEquals, ETHER, Token } from '@uniswap/sdk'
+import { Currency, CurrencyAmount, currencyEquals, Token } from '@uniswap/sdk'
 import React, { CSSProperties, MutableRefObject, useCallback, useMemo } from 'react'
 import { FixedSizeList } from 'react-window'
 import { Text } from 'rebass'
@@ -21,9 +21,10 @@ import { LightGreyCard } from 'components/Card'
 import TokenListLogo from '../../assets/svg/tokenlist.svg'
 import QuestionHelper from 'components/QuestionHelper'
 import useTheme from 'hooks/useTheme'
+import { SWAPHIVE } from 'constants/index'
 
 function currencyKey(currency: Currency): string {
-  return currency instanceof Token ? currency.address : currency === ETHER ? 'SWAP.HIVE' : ''
+  return currency instanceof Token ? currency.address : currency === SWAPHIVE ? 'SWAP.HIVE' : ''
 }
 
 const StyledBalanceText = styled(Text)`
@@ -167,7 +168,7 @@ export default function CurrencyList({
   breakIndex: number | undefined
 }) {
   const itemData: (Currency | undefined)[] = useMemo(() => {    
-    let formatted: (Currency | undefined)[] = showETH ? [Currency.ETHER, ...currencies] : currencies
+    let formatted: (Currency | undefined)[] = showETH ? [SWAPHIVE, ...currencies] : currencies
     if (breakIndex !== undefined) {
       formatted = [...formatted.slice(0, breakIndex), undefined, ...formatted.slice(breakIndex, formatted.length)]
     }

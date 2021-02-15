@@ -1,11 +1,13 @@
-import { Currency, ETHER, Token } from '@uniswap/sdk'
+import { Currency, Token } from '@uniswap/sdk'
+import { SWAPHIVE } from 'constants/index';
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
 
-import EthereumLogo from '../../assets/images/ethereum-logo.png'
 import useHttpLocations from '../../hooks/useHttpLocations'
 import { WrappedTokenInfo } from '../../state/lists/hooks'
 import Logo from '../Logo'
+
+export const SwapHiveLogo = "https://files.peakd.com/file/peakd-hive/aggroed/edUxk8GJ-logo_transparent1.png";
 
 export const getTokenLogoURL = (address: string) =>
   `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`
@@ -37,7 +39,7 @@ export default function CurrencyLogo({
   const uriLocations = useHttpLocations(currency instanceof WrappedTokenInfo ? currency.logoURI : undefined)
 
   const srcs: string[] = useMemo(() => {
-    if (currency === ETHER) return []
+    if (currency === SWAPHIVE) return []
 
     if (currency instanceof Token) {
       if (currency instanceof WrappedTokenInfo) {
@@ -48,8 +50,8 @@ export default function CurrencyLogo({
     return []
   }, [currency, uriLocations])
 
-  if (currency === ETHER) {
-    return <StyledEthereumLogo src={EthereumLogo} size={size} style={style} />
+  if (currency === SWAPHIVE) {
+    return <StyledEthereumLogo src={SwapHiveLogo} size={size} style={style} />
   }
 
   return <StyledLogo size={size} srcs={srcs} alt={`${currency?.symbol ?? 'token'} logo`} style={style} />

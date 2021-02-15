@@ -1,6 +1,6 @@
 import { TransactionResponse } from '@ethersproject/abstract-provider'
 import { AddressZero } from '@ethersproject/constants'
-import { Currency, CurrencyAmount, Fraction, JSBI, Percent, Token, TokenAmount, WETH } from '@uniswap/sdk'
+import { CurrencyAmount, Fraction, JSBI, Percent, Token, TokenAmount, WETH } from '@uniswap/sdk'
 import React, { useCallback, useMemo, useState } from 'react'
 import ReactGA from 'react-ga'
 import { Redirect, RouteComponentProps } from 'react-router'
@@ -28,6 +28,7 @@ import { BackArrow, ExternalLink, TYPE } from '../../theme'
 import { getEtherscanLink, isAddress } from '../../utils'
 import { BodyWrapper } from '../AppBody'
 import { EmptyState } from './EmptyState'
+import { SWAPHIVE } from 'constants/index'
 
 const WEI_DENOM = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(18))
 const ZERO = JSBI.BigInt(0)
@@ -79,7 +80,7 @@ export function V1LiquidityInfo({
           <Text fontSize={16} fontWeight={500} marginLeft={'6px'}>
             <FormattedCurrencyAmount currencyAmount={ethWorth} />
           </Text>
-          <CurrencyLogo size="20px" style={{ marginLeft: '8px' }} currency={Currency.ETHER} />
+          <CurrencyLogo size="20px" style={{ marginLeft: '8px' }} currency={SWAPHIVE} />
         </RowFixed>
       </RowBetween>
     </>

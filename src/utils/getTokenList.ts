@@ -1,4 +1,4 @@
-import { LEO, BEE, WORKERBEE, DEC, PAL } from './../constants/index';
+import { LEO, BEE, WORKERBEE, DEC, PAL, SWAPHIVE } from './../constants/index';
 //import { ChainId } from '@uniswap/sdk';
 import { TokenList, TokenInfo, IHiveToken, IHiveTokenMetadata } from '@uniswap/token-lists'
 import schema from '@uniswap/token-lists/src/tokenlist.schema.json'
@@ -121,6 +121,9 @@ export function setDefaultAddresses(dpToken:TokenInfo) {
     case "DEC":
       dpToken.address = DEC.address;
       break;
+    case "SWAP.HIVE":
+        dpToken.address = SWAPHIVE.address;
+        break;
   }    
 }
 
@@ -137,6 +140,7 @@ export function randHex(len: number) {
 };
 
 export async function loadTokens(symbols = [], limit = 50, offset = 0): Promise<any[]> {
+    const disabledTokens = (process.env.REACT_APP_HE_DISABLED_TOKENS as string).split(',');
     const queryConfig: any = {};
 
     if (symbols.length) {
@@ -147,11 +151,12 @@ export async function loadTokens(symbols = [], limit = 50, offset = 0): Promise<
     let tokens: IHiveToken[] = [];
 
     for (const res of results) {
-      // if (process.env.REACT_APP_HE_DISABLED_TOKENS.includes(res.symbol)) {
-      //   continue;
-      // }
-
-      tokens.push(mapTokenResultToIToken(res));
+      console.log(disabledTokens);
+       if (disabledTokens.includes(res.symbol)) {
+         continue;
+       }
+      //if (res.symbol != "SWAP.HIVE")
+        tokens.push(mapTokenResultToIToken(res));
     }
 
     return tokens;

@@ -1,9 +1,9 @@
+import { SWAPHIVE } from './../constants/index';
 import { AddressZero } from '@ethersproject/constants'
 import {
   BigintIsh,
   Currency,
   CurrencyAmount,
-  ETHER,
   JSBI,
   Pair,
   Route,
@@ -106,8 +106,8 @@ export function useV1Trade(
   const inputPair = useMockV1Pair(inputCurrency)
   const outputPair = useMockV1Pair(outputCurrency)
 
-  const inputIsETH = inputCurrency === ETHER
-  const outputIsETH = outputCurrency === ETHER
+  const inputIsETH = inputCurrency === SWAPHIVE
+  const outputIsETH = outputCurrency === SWAPHIVE
 
   // construct a direct or through ETH v1 route
   let pairs: Pair[] = []

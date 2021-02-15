@@ -1,4 +1,4 @@
-import { Currency, ETHER, Token } from '@uniswap/sdk'
+import { Currency, Token } from '@uniswap/sdk'
 import React, { KeyboardEvent, RefObject, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import ReactGA from 'react-ga'
 import { useTranslation } from 'react-i18next'
@@ -23,6 +23,7 @@ import useTheme from 'hooks/useTheme'
 import ImportRow from './ImportRow'
 import { Edit } from 'react-feather'
 import useDebounce from 'hooks/useDebounce'
+import { SWAPHIVE } from 'constants/index'
 
 const ContentWrapper = styled(Column)`
   width: 100%;
@@ -136,7 +137,7 @@ export function CurrencySearch({
       if (e.key === 'Enter') {
         const s = debouncedQuery.toLowerCase().trim()
         if (s === 'eth') {
-          handleCurrencySelect(ETHER)
+          handleCurrencySelect(SWAPHIVE)
         } else if (filteredSortedTokens.length > 0) {
           if (
             filteredSortedTokens[0].symbol?.toLowerCase() === debouncedQuery.trim().toLowerCase() ||

@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, ETHER, JSBI, Pair, Percent, Price, TokenAmount } from '@uniswap/sdk'
+import { Currency, CurrencyAmount, JSBI, Pair, Percent, Price, TokenAmount } from '@uniswap/sdk'
 import { useCallback, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { PairState, usePair } from '../../data/Reserves'
@@ -10,6 +10,7 @@ import { AppDispatch, AppState } from '../index'
 import { tryParseAmount } from '../swap/hooks'
 import { useCurrencyBalances } from '../wallet/hooks'
 import { Field, typeInput } from './actions'
+import { SWAPHIVE } from 'constants/index'
 
 const ZERO = JSBI.BigInt(0)
 
@@ -110,7 +111,7 @@ export function useDerivedMintInfo(
           dependentField === Field.CURRENCY_B
             ? pair.priceOf(tokenA).quote(wrappedIndependentAmount)
             : pair.priceOf(tokenB).quote(wrappedIndependentAmount)
-        return dependentCurrency === ETHER ? CurrencyAmount.ether(dependentTokenAmount.raw) : dependentTokenAmount
+        return dependentCurrency === SWAPHIVE ? CurrencyAmount.ether(dependentTokenAmount.raw) : dependentTokenAmount
       }
       return undefined
     } else {

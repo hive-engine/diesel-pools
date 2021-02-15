@@ -1,4 +1,4 @@
-import { Currency, ETHER, JSBI, TokenAmount } from '@uniswap/sdk'
+import { Currency, JSBI, TokenAmount } from '@uniswap/sdk'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Plus } from 'react-feather'
 import { Text } from 'rebass'
@@ -20,6 +20,7 @@ import AppBody from '../AppBody'
 import { Dots } from '../Pool/styleds'
 import { BlueCard } from '../../components/Card'
 import { TYPE } from '../../theme'
+import {SWAPHIVE} from 'constants/index'
 
 enum Fields {
   TOKEN0 = 0,
@@ -32,7 +33,7 @@ export default function PoolFinder() {
   const [showSearch, setShowSearch] = useState<boolean>(false)
   const [activeField, setActiveField] = useState<number>(Fields.TOKEN1)
 
-  const [currency0, setCurrency0] = useState<Currency | null>(ETHER)
+  const [currency0, setCurrency0] = useState<Currency | null>(SWAPHIVE)
   const [currency1, setCurrency1] = useState<Currency | null>(null)
 
   const [pairState, pair] = usePair(currency0 ?? undefined, currency1 ?? undefined)
