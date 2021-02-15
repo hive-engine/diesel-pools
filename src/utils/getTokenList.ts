@@ -1,6 +1,6 @@
-import { LEO, BEE, WORKERBEE, DEC, PAL, SWAPHIVE } from './../constants/index';
+import { LEO, BEE, WORKERBEE, DEC, PAL, SWAPHIVE, IHiveToken, IHiveTokenMetadata } from './../constants/index';
 //import { ChainId } from '@uniswap/sdk';
-import { TokenList, TokenInfo, IHiveToken, IHiveTokenMetadata } from '@uniswap/token-lists'
+import { TokenList, TokenInfo } from '@uniswap/token-lists'
 import schema from '@uniswap/token-lists/src/tokenlist.schema.json'
 import Ajv from 'ajv'
 import contenthashToUri from './contenthashToUri'

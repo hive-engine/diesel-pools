@@ -218,3 +218,49 @@ export const BLOCKED_ADDRESSES: string[] = [
   '0x901bb9583b24D97e995513C6778dc6888AB6870e',
   '0xA7e5d5A720f06526557c513402f2e6B5fA20b008'
 ]
+
+export interface IHiveToken {
+  _id: number;
+  circulatingSupply: string;    
+  maxSupply: string;
+  metadata: IHiveTokenMetadata;
+  name: string;
+  precision: number;    
+  supply: string;
+  symbol: string;
+  usdValue?: number;
+  usdValueFormatted?: string;
+  metrics?: IHiveTokenMetrics;
+  userBalance?: IHiveTokenBalance;
+  isCrypto: boolean;
+}
+
+export interface IHiveTokenMetadata {
+  desc: string;
+  icon: string;
+  url: string;
+}
+
+export interface IHiveTokenMetrics {
+  highestBid: number;
+  lastPrice: number;
+  lastPriceUsd: string;
+  lowestAsk: number;
+  marketCap: number;    
+  priceChangeHive: number;
+  priceChangePercent: number;
+  symbol: string;
+  volume: number;
+  volumeExpiration: number;
+}
+
+
+interface IHiveTokenBalance {
+  _id: number;
+  account: string;
+  balance: number; 
+  usdValue?: number;
+  usdValueFormatted?: string;
+  stake: string;
+  symbol: string;
+}
